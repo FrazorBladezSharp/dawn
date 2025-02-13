@@ -1,11 +1,9 @@
-mod window_api;
 mod input;
+mod render;
+mod window_api;
 
-use sfml::{cpp::FBox, graphics::RenderWindow};
 use crate::applicationinfo::*;
-use input::input_events;
-
-//use crate::applicationinfo;
+use sfml::{cpp::FBox, graphics::RenderWindow};
 
 // Holds the main loop for the application
 
@@ -19,18 +17,12 @@ impl App {
     // create and initialise
     pub fn new() -> Self {
         println!("A new application is being created");
-        
-        // create a window
-        let app_window = window_api::create_window(
-            WINDOW_WIDTH, 
-            WINDOW_HIEGHT,
-            WINDOW_TITLE, 
-            MAX_FPS,
-        );
 
-        App {
-            window: app_window,
-        }
+        // create a window
+        let app_window =
+            window_api::create_window(WINDOW_WIDTH, WINDOW_HIEGHT, WINDOW_TITLE, MAX_FPS);
+
+        App { window: app_window }
     }
 
     // run the main loop
@@ -38,15 +30,16 @@ impl App {
         println!("Application is running");
 
         // main application loop
-        while self.window.is_open(){
+        while self.window.is_open() {
             // poll the OS events
-            input_events(self);
-            
-            // update our application
+            input::input_events(self);
 
+            // update our application (ECS ?, GUI ?)
+            
             // render to window
+            render::render_all(self);
         }
 
-        // shutdown 
+        // shutdown
     }
 }
