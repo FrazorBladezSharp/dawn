@@ -1,7 +1,9 @@
 mod window_api;
+mod input;
 
-use sfml::{cpp::FBox, graphics::RenderWindow, window::Event};
+use sfml::{cpp::FBox, graphics::RenderWindow};
 use crate::applicationinfo::*;
+use input::input_events;
 
 //use crate::applicationinfo;
 
@@ -38,13 +40,8 @@ impl App {
         // main application loop
         while self.window.is_open(){
             // poll the OS events
-            while let Some(event) = self.window.poll_event() {
-                match event{
-                    Event::Closed => self.window.close(),
-
-                    _ => {}
-                }
-            }
+            input_events(self);
+            
             // update our application
 
             // render to window
