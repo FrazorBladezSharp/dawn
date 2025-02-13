@@ -3,7 +3,8 @@ mod render;
 mod window_api;
 
 use crate::applicationinfo::*;
-use sfml::{cpp::FBox, graphics::RenderWindow};
+use sfml::cpp::FBox; 
+use sfml::graphics::RenderWindow;
 
 // Holds the main loop for the application
 
@@ -20,7 +21,12 @@ impl App {
 
         // create a window
         let app_window =
-            window_api::create_window(WINDOW_WIDTH, WINDOW_HIEGHT, WINDOW_TITLE, MAX_FPS);
+            window_api::create_window(
+                WINDOW_WIDTH, 
+                WINDOW_HEIGHT, 
+                WINDOW_TITLE, 
+                MAX_FPS
+            );
 
         App { window: app_window }
     }
@@ -35,7 +41,7 @@ impl App {
             input::input_events(self);
 
             // update our application (ECS ?, GUI ?)
-            
+
             // render to window
             render::render_all(self);
         }
