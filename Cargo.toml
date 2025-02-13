@@ -1,0 +1,8 @@
+[package]
+name = "dawn"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+dusk = { path = "../dusk"}
+sfml = "0.24.0"
