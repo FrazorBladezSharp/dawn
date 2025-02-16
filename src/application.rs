@@ -1,10 +1,15 @@
+
+mod ecs;
 mod input;
 mod render;
 mod window_api;
 
+
 use crate::applicationinfo::*;
+use ecs::*;
 use sfml::cpp::FBox; 
 use sfml::graphics::RenderWindow;
+use specs::{World, WorldExt};
 
 // Holds the main loop for the application
 
@@ -12,6 +17,7 @@ use sfml::graphics::RenderWindow;
 pub struct App {
     window: FBox<RenderWindow>,
     is_running: bool,
+    world: World
 }
 
 // implimentation of main application
@@ -28,10 +34,18 @@ impl App {
                 WINDOW_TITLE, 
                 MAX_FPS
             );
+        
+        let mut ecs_world = World::new();
+        register_components(&mut ecs_world);
+        
+        // TODO: reduce the amount of function calls
+        create_entities::create_bat(&mut ecs_world);
+        create_entities::create_ball(&mut ecs_world);
 
         App { 
             window: app_window,
             is_running: true, 
+            world: ecs_world,
         }
     }
 
