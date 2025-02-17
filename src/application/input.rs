@@ -1,17 +1,15 @@
 use sfml::window::{Event, Key};
 use super::App;
 
-pub fn input_events(main_app: &mut App) /*-> result */{
+pub fn input_events(main_app: &mut App) -> bool{
 
     while let Some(event) = main_app.window.poll_event() {
-        match event{
-            // TODO: this file should never close the window !!!
-            
+        match event{            
             // events from the window controller (OS)
-            Event::Closed => main_app.window.close(),
+            Event::Closed => return false,
 
             // events from the keyboard
-            Event::KeyPressed {code: Key::Escape, ..} => main_app.window.close(),
+            Event::KeyPressed {code: Key::Escape, ..} => return false,
 
             // events from the mouse
 
@@ -19,4 +17,6 @@ pub fn input_events(main_app: &mut App) /*-> result */{
             _ => {}
         }
     }
+
+    true
 }

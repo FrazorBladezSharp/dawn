@@ -11,6 +11,7 @@ use sfml::graphics::RenderWindow;
 // A structure to hold all important data for use in the application
 pub struct App {
     window: FBox<RenderWindow>,
+    is_running: bool,
 }
 
 // implimentation of main application
@@ -28,7 +29,10 @@ impl App {
                 MAX_FPS
             );
 
-        App { window: app_window }
+        App { 
+            window: app_window,
+            is_running: true, 
+        }
     }
 
     // run the main loop
@@ -36,9 +40,9 @@ impl App {
         println!("Application is running");
 
         // main application loop
-        while self.window.is_open() {
+        while self.is_running {
             // poll the OS events
-            input::input_events(self);
+            self.is_running = input::input_events(self);
 
             // update our application (ECS ?, GUI ?)
 
@@ -47,5 +51,6 @@ impl App {
         }
 
         // shutdown
+        self.window.close();
     }
 }
