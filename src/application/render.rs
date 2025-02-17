@@ -1,8 +1,11 @@
-use sfml::{graphics::{Color, RectangleShape, RenderTarget, Transformable}, system::Vector2f};
-use specs::{Join, WorldExt};
 use super::{ecs::component::*, App};
+use sfml::{
+    graphics::{Color, RectangleShape, RenderTarget, Transformable},
+    system::Vector2f,
+};
+use specs::{Join, WorldExt};
 
-// values used are between 0 and 255 
+// values used are between 0 and 255
 const BACKGROUND_COLOR: Color = Color {
     r: 10,
     g: 10,
@@ -13,7 +16,7 @@ const BACKGROUND_COLOR: Color = Color {
 pub fn render_all(main_app: &mut App) {
     // create a list of all things to be redered
 
-    // clear the back buffer 
+    // clear the back buffer
     main_app.window.clear(BACKGROUND_COLOR);
 
     // draw all current objects to the back buffer
@@ -24,19 +27,23 @@ pub fn render_all(main_app: &mut App) {
     main_app.window.display();
 }
 
-fn draw_rectangles(app: &mut App){
+// TODO: why are we constructing the rectangle here ???
+//  : can this be done when we create the entity ?
+fn draw_rectangles(app: &mut App) {
+    // varables
     let mut rectangle = RectangleShape::new();
 
-    let positions 
-        = app.world.read_storage::<Position>();
-    let sizes 
-        = app.world.read_storage::<Size>();
+    // Gather the data 
+    let positions = app.world.read_storage::<CPosition>();
+    let sizes = app.world.read_storage::<CSize>();
 
-    for (pos, siz) in (&positions, &sizes).join(){
-
+    // go through each set of data
+    for (pos, siz) in (&positions, &sizes).join() {
+        // create the rectangle to be drawn
         rectangle.set_position(Vector2f::new(pos.x, pos.y));
         rectangle.set_size(Vector2f::new(siz.width, siz.height));
 
+        // render
         app.window.draw(&rectangle);
     }
 }

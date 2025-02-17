@@ -1,14 +1,13 @@
-
-pub mod create_entities;
 pub mod component;
+pub mod entities;
 pub mod systems;
 
 use component::*;
 use specs::{World, WorldExt};
 
-
-pub fn register_components(app_world: &mut World){
-    app_world.register::<Position>();
+pub fn register_components(app_world: &mut World) {
+    // register each Component to the ecs world storage
+    app_world.register::<CPosition>();
     //app_world.register::<Velocity>();
-    app_world.register::<Size>();
+    app_world.register::<CSize>();
 }

@@ -39,8 +39,8 @@ impl App {
         register_components(&mut ecs_world);
         
         // TODO: reduce the amount of function calls
-        create_entities::create_bat(&mut ecs_world);
-        create_entities::create_ball(&mut ecs_world);
+        entities::create_bat(&mut ecs_world);
+        entities::create_ball(&mut ecs_world);
 
         App { 
             window: app_window,
