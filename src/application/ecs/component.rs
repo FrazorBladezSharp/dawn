@@ -1,4 +1,3 @@
-
 //use sfml::graphics::Rect;
 use specs::prelude::*;
 use specs_derive::Component;
@@ -8,13 +7,13 @@ pub struct CPosition {
     pub x: f32,
     pub y: f32,
 }
-/*
+
 #[derive(Component, Default)]
-pub struct CVelocity{
+pub struct CVelocity {
     pub x: f32,
     pub y: f32,
 }
-*/
+
 #[derive(Component, Default)]
 pub struct CSize {
     pub width: f32,

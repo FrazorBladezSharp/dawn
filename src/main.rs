@@ -19,5 +19,5 @@ fn main() {
     application.run();
 
     // exit the application
-    println!("The Application has shutdown");
+    println!("The Application has shutdown\n");
 }

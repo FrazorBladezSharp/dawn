@@ -33,7 +33,7 @@ fn draw_rectangles(app: &mut App) {
     // varables
     let mut rectangle = RectangleShape::new();
 
-    // Gather the data 
+    // Gather the data
     let positions = app.world.read_storage::<CPosition>();
     let sizes = app.world.read_storage::<CSize>();
 
