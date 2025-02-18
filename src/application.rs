@@ -31,9 +31,8 @@ impl App {
         let mut ecs_world = World::new();
         register_components(&mut ecs_world);
 
-        // TODO: reduce the amount of function calls
-        entities::create_bat(&mut ecs_world);
-        entities::create_ball(&mut ecs_world);
+        // create our game entities
+        entities::create_entities(&mut ecs_world);
 
         App {
             window: app_window,
