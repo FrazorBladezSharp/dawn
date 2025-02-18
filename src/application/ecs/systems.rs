@@ -1,9 +1,8 @@
-use specs::{Join, WorldExt};
-
-use super::components::*;
 use crate::application::App;
+use specs::{Join, WorldExt};
+use super::components::*;
 
-pub fn update(app: &mut App){
+pub fn update(app: &mut App) {
     // update all our systems
     move_all(app);
 }

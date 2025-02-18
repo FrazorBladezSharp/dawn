@@ -1,6 +1,6 @@
-use super::components::*;
 use sfml::graphics::Rect;
 use specs::{Builder, World, WorldExt};
+use super::components::*;
 
 // TODO: are there better ways to do this ???
 //  : use an initial data set (array) and loop ?

@@ -1,5 +1,5 @@
-use super::App;
 use sfml::window::{Event, Key};
+use super::App;
 
 pub fn input_events(main_app: &mut App) -> bool {
     while let Some(event) = main_app.window.poll_event() {

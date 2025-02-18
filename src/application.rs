@@ -9,7 +9,8 @@ use sfml::cpp::FBox;
 use sfml::graphics::RenderWindow;
 use specs::{World, WorldExt};
 
-// Holds the main loop for the application
+// constructs the application and its data
+//  : Holds the main loop for the application
 
 // A structure to hold all important data for use in the application
 pub struct App {
@@ -28,12 +29,16 @@ impl App {
         let app_window =
             window_api::create_window(WINDOW_WIDTH, WINDOW_HEIGHT, WINDOW_TITLE, MAX_FPS);
 
+        // create the ecs storage 
         let mut ecs_world = World::new();
+        
+        // store all components into the ecs
         register_components(&mut ecs_world);
 
         // create our game entities
         entities::create_entities(&mut ecs_world);
 
+        // return the completed App to the user
         App {
             window: app_window,
             is_running: true,
@@ -41,23 +46,23 @@ impl App {
         }
     }
 
-    // run the main loop
+    // run the main application loop
     pub fn run(&mut self) {
         println!("Application is running");
 
         // main application loop
         while self.is_running {
-            // poll the OS events
+            // poll all input and OS events
             self.is_running = input::input_events(self);
 
-            // update our application (ECS ?, GUI ?)
+            // update our application (ECS, GUI ?)
             ecs::systems::update(self);
 
-            // render to window
+            // render to the applications window
             render::render_all(self);
         }
 
-        // shutdown
+        // shutdown with a clean exit to the OS
         self.window.close();
     }
 }
