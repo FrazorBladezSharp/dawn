@@ -29,7 +29,9 @@ https://github.com/jeremyletang/rust-sfml
 sfml learning reference guide
 https://www.sfml-dev.org/tutorials/3.0/graphics/draw/#introduction
 
-specs + specs-derive ecs   rogue tutorial using rltk
+specs + specs-derive ecs
+https://docs.rs/specs/latest/specs/
+    rogue tutorial using rltk
 https://bfnightly.bracketproductions.com/rustbook/chapter_0.html
 https://bfnightly.bracketproductions.com/chapter_2.html
 
