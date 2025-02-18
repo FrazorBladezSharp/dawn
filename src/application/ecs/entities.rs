@@ -1,4 +1,5 @@
 use super::components::*;
+use sfml::graphics::Rect;
 use specs::{Builder, World, WorldExt};
 
 // TODO: are there better ways to do this ???
@@ -8,23 +9,15 @@ use specs::{Builder, World, WorldExt};
 pub fn create_bat(app_world: &mut World) {
     app_world
         .create_entity()
-        .with(CPosition { x: 500.0, y: 500.0 })
+        .with(CRectangle { rectangle: Rect::new(500.0, 500.0, 100.0, 20.0) })
         .with(CVelocity { x: 1.0, y: 1.0 })
-        .with(CSize {
-            width: 50.0,
-            height: 20.0,
-        })
         .build();
 }
 
 pub fn create_ball(app_world: &mut World) {
     app_world
         .create_entity()
-        .with(CPosition { x: 525.0, y: 250.0 })
+        .with(CRectangle { rectangle: Rect::new(525.0, 250.0, 20.0, 20.0) })
         .with(CVelocity { x: 1.0, y: 1.0 })
-        .with(CSize {
-            width: 10.0,
-            height: 10.0,
-        })
         .build();
 }
