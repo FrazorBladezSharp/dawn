@@ -1,4 +1,4 @@
-use super::{ecs::component::*, App};
+use super::{ecs::components::*, App};
 use sfml::{
     graphics::{Color, RectangleShape, RenderTarget, Transformable},
     system::Vector2f,

@@ -1,4 +1,4 @@
-use super::component::*;
+use super::components::*;
 use specs::{Builder, World, WorldExt};
 
 // TODO: are there better ways to do this ???

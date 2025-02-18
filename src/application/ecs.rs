@@ -1,8 +1,8 @@
-pub mod component;
+pub mod components;
 pub mod entities;
 pub mod systems;
 
-use component::*;
+use components::*;
 use specs::{World, WorldExt};
 
 pub fn register_components(app_world: &mut World) {
