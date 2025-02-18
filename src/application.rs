@@ -51,6 +51,7 @@ impl App {
             self.is_running = input::input_events(self);
 
             // update our application (ECS ?, GUI ?)
+            ecs::systems::update(self);
 
             // render to window
             render::render_all(self);
